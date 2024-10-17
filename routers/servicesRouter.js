@@ -19,39 +19,43 @@ import {
   updateSectionTwo,
 } from "../controllers/servicesController.js";
 
-const aboutRouter = express.Router();
+const servicesRouter = express.Router();
 
 // Section One
 
-aboutRouter.post("/sectionOne/add", upload.single("image"), addSectionOne);
-aboutRouter.put("/sectionOne/update/:id", upload.single("image"), updateSectionOne);
-aboutRouter.get("/sectionOne/list", listAllSectionOne);
-aboutRouter.get("/sectionOne/get/:id", getSelectedSectionOne);
-aboutRouter.delete("/sectionOne/delete/:id", deleteSectionOne);
+servicesRouter.post("/sectionOne/add", upload.single("image"), addSectionOne);
+servicesRouter.put("/sectionOne/update/:id", upload.single("image"), updateSectionOne);
+servicesRouter.get("/sectionOne/list", listAllSectionOne);
+servicesRouter.get("/sectionOne/get/:id", getSelectedSectionOne);
+servicesRouter.delete("/sectionOne/delete/:id", deleteSectionOne);
 
 // Section Two
 
-aboutRouter.post("/sectionTwo/add/:id", upload.single("image"), addSectionTwo);
-aboutRouter.put("/sectionTwo/update/:id/:entryId", upload.single("image"), updateSectionTwo);
-aboutRouter.get("/sectionTwo/list/:id", listAllSectionTwo);
-aboutRouter.get("/sectionTwo/get/:id/:entryId", getSelectedSectionTwo);
-aboutRouter.delete("/sectionTwo/delete/:id/:entryId", deleteSectionTwo);
+servicesRouter.post("/sectionTwo/add/:id", upload.single("image"), addSectionTwo);
+servicesRouter.put("/sectionTwo/update/:id/:entryId", upload.single("image"), updateSectionTwo);
+servicesRouter.get("/sectionTwo/list/:id", listAllSectionTwo);
+servicesRouter.get("/sectionTwo/get/:id/:entryId", getSelectedSectionTwo);
+servicesRouter.delete("/sectionTwo/delete/:id/:entryId", deleteSectionTwo);
 
 // Section Three
 
-homeRouter.post(
-    "/sectionthree/add",
-    upload.fields([{ name: "image" }]),
+servicesRouter.post(
+    "/sectionThree/add",
+    upload.single("image"),
     addSectionThree
   );
-  homeRouter.put(
-    "/sectionthree/update/:documentId/:contentId",
-    upload.fields([{ name: "image" }]),
+  servicesRouter.put(
+    "/sectionThree/update/:documentId/:contentId",
+    upload.single("image"),
     updateSectionThree
   );
-  homeRouter.get("/sectionthree", listAllSectionThree);
-  homeRouter.get("/sectionthree/:documentId/:contentId", getSelectedSectionThree);
-  homeRouter.delete(
-    "/sectionthree/delete/:documentId/:contentId",
+  servicesRouter.get("/sectionThree", listAllSectionThree);
+  servicesRouter.get("/sectionThree/:documentId/:contentId", getSelectedSectionThree);
+  servicesRouter.delete(
+    "/sectionThree/delete/:documentId/:contentId",
     deleteSectionThree
   );
+
+export default servicesRouter;
+
+// upload.fields([{ name: "image" }])

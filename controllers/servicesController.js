@@ -44,7 +44,7 @@ export const addSectionOne = async (req, res) => {
       }
   
       if (req.file && service.sectionOne.image) {
-        const oldImagePath = path.join("uploads", about.sectionOne.image);
+        const oldImagePath = path.join("uploads", service.sectionOne.image);
         if (fs.existsSync(oldImagePath)) {
           fs.unlinkSync(oldImagePath);
         }
@@ -246,8 +246,8 @@ export const addSectionThree = async (req, res) => {
   try {
     const { heading, contentHeading, info, buttonText } = req.body;
     // const icon = req.files.icon ? req.files.icon[0].filename : null;
-    const image = req.files.image ? req.files.image[0].filename : null;
-
+    //const image = req.files.image ? req.files.image[0].filename : null;
+    const image = req.file ? req.file.filename : null;
     const service = await services.findOne();
     if (!service) {
       return res.status(404).json({ message: "Home document not found" });
@@ -279,10 +279,11 @@ export const updateSectionThree = async (req, res) => {
     const { documentId, contentId } = req.params;
     const { heading, contentHeading, info, buttonText} = req.body;
     // const icon = req.files.icon ? req.files.icon[0].filename : null;
-    const image = req.files.image ? req.files.image[0].filename : null;
+    //const image = req.files.image ? req.files.image[0].filename : null;
+    const image = req.file ? req.file.filename : null;
 
     const service = await services.findById(documentId);
-    if (!service || !service.sectionFive) {
+    if (!service || !service.sectionThree) {
       return res.status(404).json({ message: "Section not found" });
     }
 

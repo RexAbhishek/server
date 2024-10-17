@@ -4,7 +4,7 @@ const insightsSchema = new mongoose.Schema({
     sectionOne: {
         heading: { type: String, required: true },
         // description: { type: String, required: true },
-        image: { type: String, required: true },
+        image: { type: String, required: true }
         
       },
       sectionTwo:{ 

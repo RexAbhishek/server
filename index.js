@@ -3,12 +3,21 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+
 import path from "path";
 import { fileURLToPath } from "url";
 import { dbConnect } from "./config/connection.js";
+
 import adminRouter from "./routers/adminRouter.js";
 import homeRouter from "./routers/homeRouter.js";
 import aboutRouter from "./routers/aboutRouter.js";
+import servicesRouter from "./routers/servicesRouter.js";
+import industriesRouter from "./routers/industriesRouter.js";
+import insightsRouter from "./routers/insightsRouter.js";
+import careerRouter from "./routers/careerRouter.js";
+import contactRouter from "./routers/contactsRouter.js";
+
+
 
 const app = express();
 dotenv.config();
@@ -59,3 +68,11 @@ app.use((err, req, res, next) => {
 app.use("/admin", adminRouter);
 app.use("/home", homeRouter);
 app.use("/about", aboutRouter);
+app.use("/services", servicesRouter);
+app.use("/industries", industriesRouter);
+app.use("/insights", insightsRouter);
+app.use("/career", careerRouter);
+app.use("/contacts", contactRouter);
+
+
+
