@@ -1,4 +1,4 @@
-export const sendMail = async () => {
+export const sendMail = async (receiverMail) => {
 const auth = nodemailer.createTransport({
     service: "gmail",
     secure : true,
@@ -12,7 +12,7 @@ const auth = nodemailer.createTransport({
 
 const receiver = {
     from : "youremail@gmail.com",
-    to : "youremail@gmail.com",
+    to : receiverMail,
     subject : "Node Js Mail Testing!",
     text : "Hello this is a text mail!"
 };
